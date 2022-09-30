@@ -9,6 +9,6 @@ public interface VentanaLogin extends Ventana {
 
 	public void registrarControlador(ControladorLogin controlador);
 		
-	public void poblarComboTipoUsuario(List<String> obtenerNombresUsuarios);
+	public void poblarComboTipoUsuario();
 	
 }

@@ -51,11 +51,11 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.controlador = controlador;
 	}
 	
-	public void poblarComboTipoUsuario(List<String> nombresUsuarios) {
+	public void poblarComboTipoUsuario() {
 		this.getComboTipoUsuario().removeAllItems();		
-		for (String item: nombresUsuarios) {
-			this.getComboTipoUsuario().addItem(item);
-		}
+		this.getComboTipoUsuario().addItem("Empleado");
+		this.getComboTipoUsuario().addItem("Administrador");
+		this.getComboTipoUsuario().addItem("Socio");
 	}	
 	
 	private String getUsuarioSeleccionado() {
@@ -132,6 +132,10 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.mainPanel.add(this.crearPanelTipoUsuario(), BorderLayout.PAGE_START);
 		this.mainPanel.add(this.crearPanelLogin(), BorderLayout.CENTER);		
 		this.mainPanel.add(this.crearPanelButtons(), BorderLayout.PAGE_END);
+		
+
+		
+		this.poblarComboTipoUsuario();
 
 		this.registrarEventos();
 		
@@ -199,7 +203,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		
 		JPanel panelFila2 = new JPanel();
 				
-		JLabel lblPasswordLogin = new JLabel("Contraseña:");
+		JLabel lblPasswordLogin = new JLabel("Contraseza:");
 				
 		this.campoAdminPassword = new JPasswordField();
 		this.campoAdminPassword.setColumns(10);
