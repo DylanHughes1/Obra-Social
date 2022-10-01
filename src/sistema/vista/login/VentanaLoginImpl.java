@@ -131,10 +131,6 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.mainPanel.add(this.crearPanelTipoUsuario(), BorderLayout.PAGE_START);
 		this.mainPanel.add(this.crearPanelLogin(), BorderLayout.CENTER);		
 		this.mainPanel.add(this.crearPanelButtons(), BorderLayout.PAGE_END);
-		
-
-		
-		this.poblarComboTipoUsuario();
 
 		this.registrarEventos();
 		
