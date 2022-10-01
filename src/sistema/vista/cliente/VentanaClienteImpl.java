@@ -40,7 +40,6 @@ public class VentanaClienteImpl extends JFrame implements VentanaCliente {
 	private void inicializar() {
 		
 		this.frame = new JFrame();
-		this.frame.setResizable(false);
 		this.frame.setTitle("Cliente");
 		this.frame.setBounds(100, 100, 852, 575);
 		this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -120,7 +119,7 @@ private void registrarEventos() {
 			this.frame.setVisible(true);
 		}
 		else{
-			throw new Exception("Error la ventana no está disponible");			
+			throw new Exception("Error la ventana no esta disponible");			
 		}		
 	}
 
