@@ -38,8 +38,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	public void itemStateChanged(ItemEvent e) {
 		String opcion = (String) e.getItem();
 		
-		if (opcion.equals("Socio")) {
-			this.loginLayout.show(this.panelLogin, "socio");	
+		if (opcion.equals("Cliente")) {
+			this.loginLayout.show(this.panelLogin, "cliente");	
 		} 
 		else if (opcion.equals("Empleado")) {
 			this.loginLayout.show(this.panelLogin, "empleado");	
@@ -54,7 +54,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.getComboTipoUsuario().removeAllItems();		
 		this.getComboTipoUsuario().addItem("Empleado");
 		this.getComboTipoUsuario().addItem("Administrador");
-		this.getComboTipoUsuario().addItem("Socio");
+		this.getComboTipoUsuario().addItem("Cliente");
 	}	
 	
 	private String getUsuarioSeleccionado() {
@@ -92,8 +92,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	protected JTextField campoAdminUsername;
 	protected JPasswordField campoAdminPassword;
 
-	protected JTextField campoSocioUsername;
-	protected JPasswordField campoSocioPassword;
+	protected JTextField campoClienteUsername;
+	protected JPasswordField campoClientePassword;
 
 	protected JTextField campoEmpleadoUsername;
 	protected JPasswordField campoEmpleadoPassword;
@@ -203,12 +203,12 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		return campoAdminPassword;
 	}
 
-	protected JTextField getCampoSocioUsername() {
-		return campoSocioUsername;
+	protected JTextField getCampoClienteUsername() {
+		return campoClienteUsername;
 	}
 
-	protected JPasswordField getCampoSocioPassword() {
-		return campoSocioPassword;
+	protected JPasswordField getCampoClientePassword() {
+		return campoClientePassword;
 	}
 
 	protected JTextField getCampoEmpleadoUsername() {
@@ -243,7 +243,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	protected ActionListener getIngresarListener() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				if (getUsuarioSeleccionado().equals("Socio")) {			
+				if (getUsuarioSeleccionado().equals("Cliente")) {			
 	            	controlador.ingresar(getUserName(),getPassword());					
 				} 
 				else  { 
