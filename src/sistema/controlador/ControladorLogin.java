@@ -2,5 +2,5 @@ package sistema.controlador;
 
 public interface ControladorLogin { 
 
-	public void ingresarComoCliente(String username, char[] password);
+	public void ingresar(String username, char[] password);
 }

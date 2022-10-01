@@ -33,7 +33,7 @@ public class ControladorLoginImpl implements ControladorLogin {
 		}
 	}
 
-	public void ingresarComoCliente(String username, char[] password) {
+	public void ingresar(String username, char[] password) {
 
 		Usuario usuario = this.modelo.obtenerUsuario();
 
@@ -62,7 +62,7 @@ public class ControladorLoginImpl implements ControladorLogin {
 			}			
 		}
 		else{
-			this.ventana.informar("Error en el acceso a la informacion del usuario ATM.");
+			this.ventana.informar("Error en el acceso a la informacion del usuario.");
 		}			
 		
 	}
