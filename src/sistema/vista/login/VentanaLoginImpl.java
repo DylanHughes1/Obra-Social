@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -39,8 +38,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	public void itemStateChanged(ItemEvent e) {
 		String opcion = (String) e.getItem();
 		
-		if (opcion.equals("ATM")) {
-			this.loginLayout.show(this.panelLogin, "atm");	
+		if (opcion.equals("Socio")) {
+			this.loginLayout.show(this.panelLogin, "socio");	
 		} 
 		else if (opcion.equals("Empleado")) {
 			this.loginLayout.show(this.panelLogin, "empleado");	
@@ -51,11 +50,11 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.controlador = controlador;
 	}
 	
-	public void poblarComboTipoUsuario(List<String> nombresUsuarios) {
+	public void poblarComboTipoUsuario() {
 		this.getComboTipoUsuario().removeAllItems();		
-		for (String item: nombresUsuarios) {
-			this.getComboTipoUsuario().addItem(item);
-		}
+		this.getComboTipoUsuario().addItem("Empleado");
+		this.getComboTipoUsuario().addItem("Administrador");
+		this.getComboTipoUsuario().addItem("Socio");
 	}	
 	
 	private String getUsuarioSeleccionado() {
@@ -72,8 +71,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		else if (this.getUsuarioSeleccionado().equals("Empleado")) {
 			username = (String) this.getCampoEmpleadoUsername().getText();
 		} 
-		else if (this.getUsuarioSeleccionado().equals("ATM")) {
-			username = (String) this.getCampoATMUsername().getText();		
+		else if (this.getUsuarioSeleccionado().equals("Socio")) {
+			username = (String) this.getCampoSocioUsername().getText();		
 		} 
 		
 		return username;
@@ -90,8 +89,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		else if (this.getUsuarioSeleccionado().equals("Empleado")) {
 			password = this.getCampoEmpleadoPassword().getPassword();
 		} 
-		else if (this.getUsuarioSeleccionado().equals("ATM")) {
-			password = this.getCampoATMPassword().getPassword();
+		else if (this.getUsuarioSeleccionado().equals("Socio")) {
+			password = this.getCampoSocioPassword().getPassword();
 		} 
 		
 		return password;
@@ -108,8 +107,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	protected JTextField campoAdminUsername;
 	protected JPasswordField campoAdminPassword;
 
-	protected JTextField campoATMUsername;
-	protected JPasswordField campoATMPassword;
+	protected JTextField campoSocioUsername;
+	protected JPasswordField campoSocioPassword;
 
 	protected JTextField campoEmpleadoUsername;
 	protected JPasswordField campoEmpleadoPassword;
@@ -132,6 +131,10 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.mainPanel.add(this.crearPanelTipoUsuario(), BorderLayout.PAGE_START);
 		this.mainPanel.add(this.crearPanelLogin(), BorderLayout.CENTER);		
 		this.mainPanel.add(this.crearPanelButtons(), BorderLayout.PAGE_END);
+		
+
+		
+		this.poblarComboTipoUsuario();
 
 		this.registrarEventos();
 		
@@ -175,7 +178,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.panelLogin.setLayout(this.loginLayout);
 		
 		this.panelLogin.add(this.crearPanelLoginAdmin(),"admin");
-		this.panelLogin.add(this.crearPanelLoginATM(),"atm");
+		this.panelLogin.add(this.crearPanelLoginSocio(),"socio");
 		this.panelLogin.add(this.crearPanelLoginEmpleado(),"empleado");
 		
 		return this.panelLogin;
@@ -199,7 +202,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		
 		JPanel panelFila2 = new JPanel();
 				
-		JLabel lblPasswordLogin = new JLabel("ContraseÃ±a:");
+		JLabel lblPasswordLogin = new JLabel("Contraseña:");
 				
 		this.campoAdminPassword = new JPasswordField();
 		this.campoAdminPassword.setColumns(10);
@@ -213,7 +216,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		return panel;
 	}
 	
-	private JPanel crearPanelLoginATM() {
+	private JPanel crearPanelLoginSocio() {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -222,21 +225,21 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		((FlowLayout) panelFila1.getLayout()).setHgap(25);		
 
 		JLabel lblUsername = new JLabel("Nro Tarjeta:");
-		this.campoATMUsername = new JTextField();
-		this.campoATMUsername.setColumns(10);
+		this.campoSocioUsername = new JTextField();
+		this.campoSocioUsername.setColumns(10);
 
 		panelFila1.add(lblUsername);
-		panelFila1.add(this.campoATMUsername);
+		panelFila1.add(this.campoSocioUsername);
 		
 		JPanel panelFila2 = new JPanel();
 				
 		JLabel lblPasswordLogin = new JLabel("PIN:");
 				
-		this.campoATMPassword = new JPasswordField();
-		this.campoATMPassword.setColumns(10);
+		this.campoSocioPassword = new JPasswordField();
+		this.campoSocioPassword.setColumns(10);
 
 		panelFila2.add(lblPasswordLogin);		
-		panelFila2.add(this.campoATMPassword);
+		panelFila2.add(this.campoSocioPassword);
 		
 		panel.add(panelFila1);
 		panel.add(panelFila2);
@@ -261,7 +264,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		
 		JPanel panelFila2 = new JPanel();
 				
-		JLabel lblPasswordLogin = new JLabel("ContraseÃ±a:");
+		JLabel lblPasswordLogin = new JLabel("Contraseña:");
 				
 		this.campoEmpleadoPassword = new JPasswordField();
 		this.campoEmpleadoPassword.setColumns(10);
@@ -283,12 +286,12 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		return campoAdminPassword;
 	}
 
-	protected JTextField getCampoATMUsername() {
-		return campoATMUsername;
+	protected JTextField getCampoSocioUsername() {
+		return campoSocioUsername;
 	}
 
-	protected JPasswordField getCampoATMPassword() {
-		return campoATMPassword;
+	protected JPasswordField getCampoSocioPassword() {
+		return campoSocioPassword;
 	}
 
 	protected JTextField getCampoEmpleadoUsername() {
@@ -316,8 +319,8 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	}
 
 	protected void registrarEventos() {
-		this.getCampoATMUsername().addActionListener(this.getIngresarListener());		
-		this.getCampoATMPassword().addActionListener(this.getIngresarListener());
+		this.getCampoSocioUsername().addActionListener(this.getIngresarListener());		
+		this.getCampoSocioPassword().addActionListener(this.getIngresarListener());
 
 		this.getCampoEmpleadoUsername().addActionListener(this.getIngresarListener());		
 		this.getCampoEmpleadoPassword().addActionListener(this.getIngresarListener());
@@ -329,7 +332,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	protected ActionListener getIngresarListener() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				if (getUsuarioSeleccionado().equals("ATM")) {			
+				if (getUsuarioSeleccionado().equals("Socio")) {			
 	            	controlador.ingresarComoCliente(getUserName(),getPassword());					
 				} 
 				else  { 

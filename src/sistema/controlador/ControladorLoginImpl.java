@@ -26,7 +26,7 @@ public class ControladorLoginImpl implements ControladorLogin {
 			
 			this.ventana.mostrarVentana();
 			
-			this.ventana.poblarComboTipoUsuario(this.modelo.obtenerNombresUsuarios());
+			this.ventana.poblarComboTipoUsuario();
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
