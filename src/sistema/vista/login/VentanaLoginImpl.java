@@ -329,7 +329,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				if (getUsuarioSeleccionado().equals("Socio")) {			
-	            	controlador.ingresarComoCliente(getUserName(),getPassword());					
+	            	controlador.ingresar(getUserName(),getPassword());					
 				} 
 				else  { 
 					System.out.println("Intenta ingresar con un valor erroneo de usuario");
