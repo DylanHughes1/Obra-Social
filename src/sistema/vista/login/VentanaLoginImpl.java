@@ -242,16 +242,11 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	
 	protected ActionListener getIngresarListener() {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				if (getUsuarioSeleccionado().equals("Cliente")) {			
-	            	controlador.ingresar(getUserName(),getPassword());					
-				} 
-				else  { 
-					System.out.println("Intenta ingresar con un valor erroneo de usuario");
-				}				
+			public void actionPerformed(ActionEvent e){						
+	            	controlador.ingresar(getUserName(),getPassword());								 							
             }
         };
-	}
+	} 
 
 	protected ActionListener getCancelarListener() {
 		return new ActionListener() {
