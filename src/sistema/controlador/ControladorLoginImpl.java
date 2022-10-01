@@ -21,7 +21,6 @@ public class ControladorLoginImpl implements ControladorLogin {
 		try {
 			this.modelo.iniciarConexion();
 			
-			
 			this.ventana.registrarControlador(this);
 			
 			this.ventana.mostrarVentana();
