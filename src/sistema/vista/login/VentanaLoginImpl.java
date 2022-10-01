@@ -64,16 +64,9 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	private String getUserName() {
 
 		String username = null;
+
+		username = (String) this.getCampoAdminUsername().getText();
 		
-		if (this.getUsuarioSeleccionado().equals("Administrador")) {
-			username = (String) this.getCampoAdminUsername().getText();
-		} 
-		else if (this.getUsuarioSeleccionado().equals("Empleado")) {
-			username = (String) this.getCampoEmpleadoUsername().getText();
-		} 
-		else if (this.getUsuarioSeleccionado().equals("Socio")) {
-			username = (String) this.getCampoSocioUsername().getText();		
-		} 
 		
 		return username;
 	}
@@ -83,15 +76,7 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 
 		char[] password = null;
 		
-		if (this.getUsuarioSeleccionado().equals("Administrador")) {
-			password = this.getCampoAdminPassword().getPassword();
-		} 
-		else if (this.getUsuarioSeleccionado().equals("Empleado")) {
-			password = this.getCampoEmpleadoPassword().getPassword();
-		} 
-		else if (this.getUsuarioSeleccionado().equals("Socio")) {
-			password = this.getCampoSocioPassword().getPassword();
-		} 
+		password = this.getCampoAdminPassword().getPassword();
 		
 		return password;
 	}
@@ -174,8 +159,6 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 		this.panelLogin.setLayout(this.loginLayout);
 		
 		this.panelLogin.add(this.crearPanelLoginAdmin(),"admin");
-		this.panelLogin.add(this.crearPanelLoginSocio(),"socio");
-		this.panelLogin.add(this.crearPanelLoginEmpleado(),"empleado");
 		
 		return this.panelLogin;
 	}
@@ -205,68 +188,6 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 
 		panelFila2.add(lblPasswordLogin);		
 		panelFila2.add(this.campoAdminPassword);
-		
-		panel.add(panelFila1);
-		panel.add(panelFila2);
-		
-		return panel;
-	}
-	
-	private JPanel crearPanelLoginSocio() {
-
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		
-		JPanel panelFila1 = new JPanel();
-		((FlowLayout) panelFila1.getLayout()).setHgap(25);		
-
-		JLabel lblUsername = new JLabel("Nro Tarjeta:");
-		this.campoSocioUsername = new JTextField();
-		this.campoSocioUsername.setColumns(10);
-
-		panelFila1.add(lblUsername);
-		panelFila1.add(this.campoSocioUsername);
-		
-		JPanel panelFila2 = new JPanel();
-				
-		JLabel lblPasswordLogin = new JLabel("PIN:");
-				
-		this.campoSocioPassword = new JPasswordField();
-		this.campoSocioPassword.setColumns(10);
-
-		panelFila2.add(lblPasswordLogin);		
-		panelFila2.add(this.campoSocioPassword);
-		
-		panel.add(panelFila1);
-		panel.add(panelFila2);
-		
-		return panel;
-	}
-	
-	private JPanel crearPanelLoginEmpleado() {
-		
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		
-		JPanel panelFila1 = new JPanel();
-		((FlowLayout) panelFila1.getLayout()).setHgap(25);		
-
-		JLabel lblUsername = new JLabel("Legajo:");
-		this.campoEmpleadoUsername = new JTextField();
-		this.campoEmpleadoUsername.setColumns(10);
-
-		panelFila1.add(lblUsername);
-		panelFila1.add(this.campoEmpleadoUsername);
-		
-		JPanel panelFila2 = new JPanel();
-				
-		JLabel lblPasswordLogin = new JLabel("Contraseña:");
-				
-		this.campoEmpleadoPassword = new JPasswordField();
-		this.campoEmpleadoPassword.setColumns(10);
-
-		panelFila2.add(lblPasswordLogin);		
-		panelFila2.add(this.campoEmpleadoPassword);
 		
 		panel.add(panelFila1);
 		panel.add(panelFila2);
@@ -315,12 +236,6 @@ public class VentanaLoginImpl extends JFrame implements VentanaLogin, ItemListen
 	}
 
 	protected void registrarEventos() {
-		this.getCampoSocioUsername().addActionListener(this.getIngresarListener());		
-		this.getCampoSocioPassword().addActionListener(this.getIngresarListener());
-
-		this.getCampoEmpleadoUsername().addActionListener(this.getIngresarListener());		
-		this.getCampoEmpleadoPassword().addActionListener(this.getIngresarListener());
-
 		this.getBtnAceptarLogin().addActionListener(this.getIngresarListener());		
 		this.getBtnCancelarLogin().addActionListener(this.getCancelarListener());		
 	}
