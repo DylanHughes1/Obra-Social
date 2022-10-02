@@ -117,6 +117,7 @@ private void registrarEventos() {
 	public void mostrarVentana() throws Exception {
 		if (this.frame != null) {
 			this.frame.setVisible(true);
+			
 		}
 		else{
 			throw new Exception("Error la ventana no esta disponible");			
