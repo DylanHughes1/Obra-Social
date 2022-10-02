@@ -4,7 +4,7 @@ import java.util.Date;
 
 import sistema.modelo.ModeloImpl;
 
-public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
+public class ModeloClienteImpl extends ModeloImpl implements ModeloUsuario {
 
 	private int nroCliente;
 	private String apellido;
@@ -14,9 +14,11 @@ public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
 	private String direccion;	
 	private String telefono;
 	private Date fechaNacimiento;
+	private String usuario;
+	private String contrasena;
+	
 	
 	public ModeloClienteImpl() {
-		
 		nroCliente = getNroCliente();
 		nombre = getNombre();
 		apellido = getApellido();
@@ -28,8 +30,8 @@ public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
 	}
 	
 	public boolean autenticarUsuarioAplicacion(int documento){
-	return nroDocumento == documento;
-
+		return nroDocumento == documento;
+		
 	}
 	
 	public int getNroCliente() {
@@ -93,5 +95,41 @@ public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	@Override
+	public String getMail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setMail(String mail) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getUsuario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setUsuario(String Usuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getContrasena() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setContrasena(String contrasena) {
+		// TODO Auto-generated method stub
+		
 	}
 }
