@@ -14,12 +14,10 @@ public class Sistema {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-									
+				try {		
 					ModeloLogin modelo = new ModeloLoginImpl();  
 					VentanaLogin ventana = new VentanaLoginImpl();
 					ControladorLogin controlador = new ControladorLoginImpl(ventana, modelo);
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
