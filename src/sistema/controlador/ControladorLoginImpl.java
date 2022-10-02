@@ -2,7 +2,7 @@ package sistema.controlador;
 
 import sistema.modelo.Usuario;
 import sistema.modelo.ModeloLogin;
-import sistema.modelo.cliente.ModeloCliente;
+import sistema.modelo.cliente.ModeloUsuario;
 import sistema.modelo.cliente.ModeloClienteImpl;
 import sistema.vista.cliente.VentanaCliente;
 import sistema.vista.cliente.VentanaClienteImpl;
@@ -38,11 +38,11 @@ public class ControladorLoginImpl implements ControladorLogin {
 
 		if (usuario != null) {
 			
-			ModeloCliente cliente = new ModeloClienteImpl();
+			ModeloUsuario cliente = new ModeloClienteImpl();
 			
 			if (cliente.conectar(usuario.getUsername(), usuario.getPassword())) {
 			
-				if (cliente.autenticarUsuarioAplicacion(cliente.getNroDocumento())) {
+				if (cliente.autenticarUsuarioAplicacion(cliente.getNombreUsuario(), cliente.getContrasena())) {
 
 					VentanaCliente ventanaCliente = new VentanaClienteImpl();
 					ControladorCliente controladorCliente = new ControladorClienteImpl(ventanaCliente,cliente);

@@ -1,6 +1,6 @@
 package sistema.modelo;
 
-public interface Usuario {
+public interface Usuario{
 	
 	public String getUsername();
 	

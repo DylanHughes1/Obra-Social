@@ -4,42 +4,30 @@ import java.util.Date;
 
 import sistema.modelo.ModeloImpl;
 
-public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
+public class ModeloClienteImpl extends ModeloImpl implements ModeloUsuario {
 
-	private int nroCliente;
 	private String apellido;
 	private String nombre;
-	private String tipoDocumento;
 	private int nroDocumento;
-	private String direccion;	
+	private String direccion;
+	private String mail;
 	private String telefono;
 	private Date fechaNacimiento;
+	private String nombreUsuario;
+	private String contrasena;
 	
-	public ModeloClienteImpl() {
-		
-		nroCliente = getNroCliente();
+	public ModeloClienteImpl() {	
 		nombre = getNombre();
 		apellido = getApellido();
-		tipoDocumento = getTipoDocumento();
 		nroDocumento = getNroDocumento();
+		mail = getMail();
 		direccion = getDireccion();
 		telefono = getTelefono();
 		fechaNacimiento = getFechaNacimiento();
+		nombreUsuario = getNombreUsuario();
+		contrasena = getContrasena();
 	}
 	
-	public boolean autenticarUsuarioAplicacion(int documento){
-	return nroDocumento == documento;
-
-	}
-	
-	public int getNroCliente() {
-		return nroCliente;
-	}
-
-	public void setNroCliente(int nroCliente) {
-		this.nroCliente = nroCliente;
-	}
-
 	public String getApellido() {
 		return apellido;
 	}
@@ -56,13 +44,6 @@ public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
 		this.nombre = nombre;
 	}
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
-	}
-
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
-	}
 	public int getNroDocumento() {
 		return nroDocumento;
 	}
@@ -93,5 +74,41 @@ public class ModeloClienteImpl extends ModeloImpl implements ModeloCliente {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	@Override
+	public String getMail() {
+		return mail;
+	}
+
+	@Override
+	public void setMail(String mail) {
+		this.mail = mail;		
+	}
+
+	@Override
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	@Override
+	public void setNombreUsuario(String usuario) {
+		this.nombreUsuario = usuario;
+		
+	}
+
+	@Override
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	@Override
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	@Override
+	public boolean autenticarUsuarioAplicacion(String usuario, String contrasena) {
+		return this.nombreUsuario == usuario && this.contrasena == contrasena;
 	}
 }
