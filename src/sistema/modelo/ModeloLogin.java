@@ -11,5 +11,5 @@ public interface ModeloLogin {
 
 	public void iniciarConexion() throws Exception;
 	
-	public Usuario obtenerUsuario();
+	public Usuario obtenerUsuario(String rol);
 }

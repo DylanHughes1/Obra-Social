@@ -34,7 +34,7 @@ public class ControladorLoginImpl implements ControladorLogin {
 
 	public void ingresar(String username, char[] password) {
 
-		Usuario usuario = this.modelo.obtenerUsuario();
+		Usuario usuario = this.modelo.obtenerUsuario("Cliente");
 
 		if (usuario != null) {
 			

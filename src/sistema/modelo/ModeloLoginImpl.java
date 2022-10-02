@@ -46,9 +46,6 @@ public class ModeloLoginImpl implements ModeloLogin {
 				usuarios.put(label[0], user);
 			
 			}			 			
-			
-			 
-			   
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -82,10 +79,13 @@ public class ModeloLoginImpl implements ModeloLogin {
 		return esCorrecto;
 	}
 	
-	public Usuario obtenerUsuario(){
+	public Usuario obtenerUsuario(String rol){
+		System.out.println(rol);
 		for(Map.Entry<String,Usuario> m : usuarios.entrySet()){
 			Usuario user = m.getValue();
-			return user;
+			if (user.getDisplayname().equals(rol)) {
+				return user;
+			}
 		}  		
 		return null;
 	}
@@ -93,5 +93,4 @@ public class ModeloLoginImpl implements ModeloLogin {
 	public void iniciarConexion() throws Exception {
 		Conexion.inicializar("cfg/conexionBD.properties");		
 	}
-
 }
