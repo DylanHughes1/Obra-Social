@@ -2,7 +2,7 @@ package sistema.controlador;
 
 import sistema.modelo.ModeloLogin;
 import sistema.modelo.ModeloLoginImpl;
-import sistema.modelo.cliente.ModeloUsuario;
+import sistema.modelo.cliente.ModeloCliente;
 import sistema.vista.cliente.VentanaCliente;
 import sistema.vista.login.VentanaLogin;
 import sistema.vista.login.VentanaLoginImpl;
@@ -10,9 +10,9 @@ import sistema.vista.login.VentanaLoginImpl;
 public class ControladorClienteImpl implements ControladorCliente {
 	
 	private VentanaCliente ventana;
-	private ModeloUsuario modelo;
+	private ModeloCliente modelo;
 	
-	public ControladorClienteImpl(VentanaCliente ventana, ModeloUsuario modelo) {		
+	public ControladorClienteImpl(VentanaCliente ventana, ModeloCliente modelo) {		
 		this.ventana = ventana;
 		this.modelo = modelo;
 		this.ventana.registrarControlador(this);		

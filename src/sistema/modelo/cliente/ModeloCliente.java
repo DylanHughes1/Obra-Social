@@ -4,19 +4,12 @@ import java.util.Date;
 
 import sistema.modelo.Modelo;
 
-/**
- * -Nombre y Apellido e
--DNI
--Telefono
-
--Mail
--Fecha Nac.
-Cliente, empleado y Admin (Datos de Seguridad):
--Usuario
--Contraseña
- */
-public interface ModeloUsuario extends Modelo {
+public interface ModeloCliente extends Modelo {
 	
+	public int getNroCliente();
+
+	public void setNroCliente(int nroCliente);
+
 	public String getApellido();
 
 	public void setApellido(String apellido);
@@ -25,6 +18,10 @@ public interface ModeloUsuario extends Modelo {
 	
 	public void setNombre(String nombre);
 
+	public String getTipoDocumento();
+
+	public void setTipoDocumento(String tipoDocumento);
+	
 	public int getNroDocumento();
 
 	public void setNroDocumento(int nroDocumento);
@@ -37,21 +34,9 @@ public interface ModeloUsuario extends Modelo {
 
 	public void setTelefono(String telefono);
 
-	public String getMail();
-
-	public void setMail(String mail);
-	
 	public Date getFechaNacimiento();
 
 	public void setFechaNacimiento(Date fechaNacimiento);
-	
-	public String getUsuario();
 
-	public void setUsuario(String Usuario);
-	
-	public String getContrasena();
-
-	public void setContrasena(String contrasena);
-
-	public boolean autenticarUsuarioAplicacion(String usuario, String contrasena);
+	public boolean autenticarUsuarioAplicacion(int nroDocumento);
 }
